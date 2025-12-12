@@ -2,11 +2,10 @@
 FROM gradle:8.5-jdk17 AS builder
 WORKDIR /app
 
-# Копируем всё сразу — проще и надёжнее
 COPY . .
 
-# Собираем JAR
-RUN ./gradlew clean build -x test --no-daemon
+# Самая важная строка — даёт права на выполнение
+RUN chmod +x gradlew && ./gradlew clean build -x test --no-daemon
 
 # Этап 2: Запуск
 FROM eclipse-temurin:17-jdk-alpine
