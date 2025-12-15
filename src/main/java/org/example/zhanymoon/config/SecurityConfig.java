@@ -29,8 +29,9 @@ public class SecurityConfig {
                         .requestMatchers("/images/courses/**", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
 
                         // Админка и заявки — только авторизованные
-                        .requestMatchers("/api/applications", "/api/applications/**").authenticated()
-                        .anyRequest().permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/applications", "/api/applications/**").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/api/applications/**").authenticated()
+//                        .requestMatchers("/api/applications/**").authenticated()
                 )
 
                 // Basic Auth + браузер запоминает логин
