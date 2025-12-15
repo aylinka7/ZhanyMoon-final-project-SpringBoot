@@ -6,15 +6,13 @@ public record ApplicationRequest(
         @NotBlank(message = "Имя ребёнка обязательно")
         String childName,
 
-        @NotBlank
-        @Pattern(regexp = "\\d{1,2}", message = "Возраст — только цифры")
+        @NotBlank(message = "Возраст обязателен")
         String childAge,
 
         @NotBlank
         String parentName,
 
-        @NotBlank
-        @Pattern(regexp = "\\+?\\d{10,15}", message = "Неверный номер телефона")
+        @NotBlank(message = "Телефон обязателен")
         String phone,
 
         @NotBlank
